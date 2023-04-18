@@ -1,11 +1,13 @@
 import React from "react";
 import Stock from "./Stock";
+import { render } from "react-dom";
 
-function StockContainer() {
+function StockContainer({ stocks }) {
+  const renderStocks = stocks.map( stock => <Stock stock={stock} />)
   return (
     <div>
       <h2>Stocks</h2>
-      {/* render stock list here*/}
+      {renderStocks}
     </div>
   );
 }
