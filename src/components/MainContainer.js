@@ -23,9 +23,15 @@ function MainContainer() {
     setPortfolio(updatedPortfolio)
   }
 
+  function filterByCategory(category) {
+    console.log(category)
+    const updatedStocks = stocks.filter(stock => stock.type === category || category === "All")
+    setStocks(updatedStocks)
+  }
+
   return (
     <div>
-      <SearchBar />
+      <SearchBar onFilter={filterByCategory}/>
       <div className="row">
         <div className="col-8">
           <StockContainer stocks={stocks} addStock={addStockToPortfolio}/>
