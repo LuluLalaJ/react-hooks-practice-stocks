@@ -6,22 +6,27 @@ import SearchBar from "./SearchBar";
 function MainContainer() {
   const stocksUrl = "http://localhost:3001/stocks/"
   const [stocks, setStocks] = useState([])
+  const [profolio, setProfolio] = useState([])
+
   useEffect(()=>{
     fetch(stocksUrl)
     .then(r => r.json())
     .then(data => setStocks(data))
   }, [])
 
+  function addStockToProfolio(stock) {
+    setProfolio([...profolio, stock])
+  }
 
   return (
     <div>
       <SearchBar />
       <div className="row">
         <div className="col-8">
-          <StockContainer stocks={stocks} />
+          <StockContainer stocks={stocks} addStock={addStockToProfolio}/>
         </div>
         <div className="col-4">
-          <PortfolioContainer />
+          <PortfolioContainer profolio={profolio}/>
         </div>
       </div>
     </div>

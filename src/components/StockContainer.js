@@ -2,8 +2,8 @@ import React from "react";
 import Stock from "./Stock";
 import { render } from "react-dom";
 
-function StockContainer({ stocks }) {
-  const renderStocks = stocks.map( stock => <Stock stock={stock} />)
+function StockContainer({ stocks, addStock }) {
+  const renderStocks = stocks.map( stock => <Stock key={stock.id} stock={stock} addStock={addStock} />)
   return (
     <div>
       <h2>Stocks</h2>
