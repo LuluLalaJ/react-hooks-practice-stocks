@@ -2,15 +2,15 @@ import React from "react";
 import Stock from "./Stock";
 import Portfolio from "./Portfolio";
 
-function PortfolioContainer({ profolio }) {
+function PortfolioContainer({ portfolio, removeStock }) {
 
-  const renderProfolio = profolio.map(ownedStock => <Portfolio key={ownedStock.id} stock={ownedStock}/>)
+  const renderPortfolio = portfolio.map(ownedStock => <Portfolio key={ownedStock.id} stock={ownedStock} removeStock={removeStock}/>)
 
 
   return (
     <div>
       <h2>My Portfolio</h2>
-      {renderProfolio}
+      {renderPortfolio}
     </div>
   );
 }
